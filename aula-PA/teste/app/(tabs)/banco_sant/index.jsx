@@ -15,7 +15,7 @@ export default function App() {
       setModalM(`Depósito de R$ ${valorComTaxa.toFixed(2)} realizado com sucesso!`);
     } else if (transactionType === 'saque') {
       setSaldo(saldo - valorComTaxa); 
-      setModalM(`Saque de R$ ${valorComTaxa.toFixed(2)} realizado com sucesso!`);
+      setModalM(`Saque de R$ ${valorComTaxa.toFixed(2)} realizado com !`);
     }
     setValor('');
     setModalV(false);
