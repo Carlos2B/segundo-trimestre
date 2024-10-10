@@ -18,8 +18,8 @@ const style = StyleSheet.create({
     },
 
     foto: {
-width: 650,
-height: 650
+        width: 650,
+        height: 650
     }
 })
 
@@ -60,6 +60,10 @@ export default function camera() {
         setFoto(null);
     };
 
+    const qCode = async (data) => {
+        setCode(data)
+    };
+
     return (
         <View style={style.container}>
             {foto ?
@@ -68,9 +72,15 @@ export default function camera() {
                     <Button onPress={() => setFoto(null)} title="Limpar foto" />
                     <Button onPress={salvarFoto} title="Salvar foto" />
                 </View> :
-                <CameraView facing={lado} style={style.camera} ref={cameraRef}>
+                <CameraView facing={lado} style={style.camera} ref={cameraRef}
+                    barcodeScannerSettings={{
+                        barcodeTypes: ["qr"],
+                    }}
+                    onBarcodeScanned={(data) => qCode(data)}>
+
                     <Button title="Tirar foto" onPress={tirarFoto} />
                     <Button title="Troca de camera" onPress={trocaCamera} />
+
                 </CameraView>
             }
         </View>

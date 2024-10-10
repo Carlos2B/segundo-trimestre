@@ -1,6 +1,7 @@
 import { useState } from "react";
-import {Button, Image, View, StyleSheet} from 'react-native';
+import {Button, Image, View, StyleSheet, Text} from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
+import {Link} from 'react-native'
 
 export default function ImagePickerExmple() {
 
@@ -23,7 +24,9 @@ export default function ImagePickerExmple() {
 
     return(
         <View style={style.container}>
-            <Button title="Pick an imagefrom camera roll" onPress={pickImage} style={style.button}/>
+            <Button title="Escolher a imagem" onPress={pickImage} style={style.button}/>
+            <Text>Tirar uma Foto ?</Text>
+            <Link href={'http://localhost:8081/camera'}>Tirar Foto</Link>
             {image && <Image source={{uri: image}} style={style.image}/>}
         </View>
     )
